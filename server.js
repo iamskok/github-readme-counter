@@ -4,7 +4,6 @@ const express = require("express");
 const app = express();
 
 const PLACES = 7;
-// no db - so global var to keep track of count
 let counter = 0;
 
 function getCountImage(count) {
@@ -39,8 +38,6 @@ function getCountImage(count) {
 
 // get the image
 app.get("/count.svg", (req, res) => {
-  // fs.writeFileSync('counter.txt', counter)
-  // counter = fs.readFileSync('./counter.txt')
   counter = fs.readFileSync(path.join(__dirname, "counter.txt"));
   counter++;
   fs.writeFileSync(path.join(__dirname, "counter.txt"), counter.toString());
